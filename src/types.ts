@@ -6,5 +6,6 @@ export type NavigationParamList = {
 	Cards: undefined;
 	Checking: undefined;
 	Savings: undefined;
+	SignIn: undefined;
 	BottomTab: undefined;
 };

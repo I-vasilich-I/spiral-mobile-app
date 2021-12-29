@@ -9,6 +9,9 @@ import CardsScreen from '@screens/CardsScreen';
 import GivingsScreen from '@screens/GivingsScreen';
 import HomeScreen from '@screens/HomeScreen';
 import PaymentsScreen from '@screens/PaymentsScreen';
+import LogoTitle from '@components/logoTitle/logoTitle';
+import AvatarMenu from '@components/avatarMenu/avatarMenu';
+import BurgerMenu from '@components/burgerMenu/burgerMenu';
 
 const BottomTabNavigation = (): JSX.Element => {
 	const BottomTab = createBottomTabNavigator();
@@ -45,8 +48,18 @@ const BottomTabNavigation = (): JSX.Element => {
 				},
 				tabBarActiveTintColor: theme.colors?.primary,
 				tabBarInactiveTintColor: 'gray',
+				headerStyle: {
+					backgroundColor: theme.colors?.primary,
+				},
+				headerTintColor: 'white',
+				headerTitleAlign: 'center',
+				headerTitleStyle: {
+					fontWeight: 'bold',
+				},
+				headerRight: () => <AvatarMenu />,
+				headerLeft: () => <BurgerMenu />,
 			})}>
-			<BottomTab.Screen name="Home" component={HomeScreen} />
+			<BottomTab.Screen name="Home" component={HomeScreen} options={{ headerTitle: () => <LogoTitle /> }} />
 			<BottomTab.Screen name="Accounts" component={AccountsScreen} />
 			<BottomTab.Screen name="Giving" component={GivingsScreen} />
 			<BottomTab.Screen name="Payments" component={PaymentsScreen} />
