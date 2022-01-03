@@ -4,21 +4,22 @@ import { useTheme } from 'react-native-elements';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import AccountsScreen from '@screens/AccountsScreen';
-import CardsScreen from '@screens/CardsScreen';
-import GivingsScreen from '@screens/GivingsScreen';
-import HomeScreen from '@screens/HomeScreen';
-import PaymentsScreen from '@screens/PaymentsScreen';
-import LogoTitle from '@components/logoTitle/logoTitle';
-import AvatarMenu from '@components/avatarMenu/avatarMenu';
-import BurgerMenu from '@components/burgerMenu/burgerMenu';
+import AccountsScreen from '@screens/AccountsScreen/AccountsScreen';
+import CardsScreen from '@screens/CardsScreen/CardsScreen';
+import GivingsScreen from '@screens/GivingsScreen/GivingsScreen';
+import HomeScreen from '@screens/HomeScreen/HomeScreen';
+import PaymentsScreen from '@screens/PaymentsScreen/PaymentsScreen';
+import LogoTitle from '@components/LogoTitle/LogoTitle';
+import AvatarMenu from '@components/AvatarMenu/AvatarMenu';
+import BurgerMenu from '@components/BurgerMenu/BurgerMenu';
 
-const BottomTabNavigation = (): JSX.Element => {
-	const BottomTab = createBottomTabNavigator();
+const BottomTabNavigator = createBottomTabNavigator();
+
+const BottomTabStack = (): JSX.Element => {
 	const { theme } = useTheme();
 
 	return (
-		<BottomTab.Navigator
+		<BottomTabNavigator.Navigator
 			initialRouteName="Home"
 			screenOptions={({ route }) => ({
 				tabBarIcon: ({ size, color }) => {
@@ -59,13 +60,13 @@ const BottomTabNavigation = (): JSX.Element => {
 				headerRight: () => <AvatarMenu />,
 				headerLeft: () => <BurgerMenu />,
 			})}>
-			<BottomTab.Screen name="Home" component={HomeScreen} options={{ headerTitle: () => <LogoTitle /> }} />
-			<BottomTab.Screen name="Accounts" component={AccountsScreen} />
-			<BottomTab.Screen name="Giving" component={GivingsScreen} />
-			<BottomTab.Screen name="Payments" component={PaymentsScreen} />
-			<BottomTab.Screen name="Cards" component={CardsScreen} />
-		</BottomTab.Navigator>
+			<BottomTabNavigator.Screen name="Home" component={HomeScreen} options={{ headerTitle: () => <LogoTitle /> }} />
+			<BottomTabNavigator.Screen name="Accounts" component={AccountsScreen} />
+			<BottomTabNavigator.Screen name="Giving" component={GivingsScreen} />
+			<BottomTabNavigator.Screen name="Payments" component={PaymentsScreen} />
+			<BottomTabNavigator.Screen name="Cards" component={CardsScreen} />
+		</BottomTabNavigator.Navigator>
 	);
 };
 
-export default BottomTabNavigation;
+export default BottomTabStack;

@@ -1,17 +1,29 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import CheckingScreen from '@screens/CheckingScreen';
-import SavingScreen from '@screens/SavingScreen';
+import CheckingScreen from '@screens/CheckingScreen/CheckingScreen';
+import SavingScreen from '@screens/SavingScreen/SavingScreen';
 import { useTheme } from 'react-native-elements';
-import AvatarMenu from '@components/avatarMenu/avatarMenu';
-import SignInScreen from '@screens/SignInScreen';
-import useBlurredBottomTab from '@src/hooks/useBlurredBottomTab';
+import AvatarMenu from '@components/AvatarMenu/AvatarMenu';
+import SignInScreen from '@screens/SignInScreen/SignInScreen';
+import BottomTabStack from '@src/navigation/BottomTabStack';
 
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
 	const { theme } = useTheme();
-	const BottomTab = useBlurredBottomTab();
+	let BottomTab = BottomTabStack;
+
+	if (Platform.OS === 'ios') {
+		const BlurPackage = require('@react-native-community/blur');
+		const { BlurView } = BlurPackage;
+
+		BottomTab = () => (
+			<BlurView>
+				<BottomTabStack />
+			</BlurView>
+		);
+	}
 
 	return (
 		<Stack.Navigator
