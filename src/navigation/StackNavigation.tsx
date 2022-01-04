@@ -7,12 +7,21 @@ import { useTheme } from 'react-native-elements';
 import AvatarMenu from '@components/AvatarMenu/AvatarMenu';
 import SignInScreen from '@screens/SignInScreen/SignInScreen';
 import BottomTabStack from '@src/navigation/BottomTabStack';
+import CustomTitle from '@components/CustomTitle/CustomTitle';
 
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
 	const { theme } = useTheme();
 	let BottomTab = BottomTabStack;
+
+	const checkingOptions = ({ route }) => ({
+		headerTitle: <CustomTitle title="Checking" subtitle={route.params?.subtitle} />,
+	});
+
+	const savingsOptions = ({ route }) => ({
+		headerTitle: <CustomTitle title="Savings" subtitle={route.params?.subtitle} />,
+	});
 
 	if (Platform.OS === 'ios') {
 		const BlurPackage = require('@react-native-community/blur');
@@ -39,8 +48,8 @@ const StackNavigation = () => {
 				headerRight: () => <AvatarMenu />,
 			}}>
 			<Stack.Screen name="BottomTab" component={BottomTab} options={{ headerShown: false }} />
-			<Stack.Screen name="Checking" component={CheckingScreen} />
-			<Stack.Screen name="Savings" component={SavingScreen} />
+			<Stack.Screen name="Checking" component={CheckingScreen} options={checkingOptions} />
+			<Stack.Screen name="Savings" component={SavingScreen} options={savingsOptions} />
 			<Stack.Screen name="SignIn" component={SignInScreen} />
 		</Stack.Navigator>
 	);

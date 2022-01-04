@@ -4,8 +4,8 @@ export type NavigationParamList = {
 	Giving: undefined;
 	Payments: undefined;
 	Cards: undefined;
-	Checking: undefined;
-	Savings: undefined;
+	Checking: { subtitle: string };
+	Savings: { subtitle: string };
 	SignIn: undefined;
 	BottomTab: undefined;
 };

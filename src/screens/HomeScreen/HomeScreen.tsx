@@ -16,8 +16,14 @@ const HomeScreen = (): JSX.Element => {
 		<SafeAreaView>
 			<View style={styles.container}>
 				<Text>This is Home screen</Text>
-				<Button title="Go to Checking" onPress={() => navigation.navigate('Checking')} />
-				<Button title="Go to Savings" onPress={() => navigation.navigate('Savings')} />
+				<Button
+					title="Go to Checking"
+					onPress={() => navigation.navigate('Checking', { subtitle: 'checking subtitle' })}
+				/>
+				<Button
+					title="Go to Savings"
+					onPress={() => navigation.navigate('Savings', { subtitle: 'savings subtitle' })}
+				/>
 			</View>
 		</SafeAreaView>
 	);
