@@ -3,5 +3,12 @@ module.exports = {
 		ios: {},
 		android: {}, // grouped into "project"
 	},
-	assets: ['./app/assets/fonts/', './app/assets/images/'], // stays the same
+	assets: ['./src/assets/fonts/'], // stays the same
+	dependencies: {
+		'@react-native-community/blur': {
+			platforms: {
+				android: null,
+			},
+		},
+	},
 };
