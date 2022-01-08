@@ -3,8 +3,11 @@ import { Modal, Pressable, StyleSheet, View } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { Avatar, Text } from 'react-native-elements';
 import IMAGES from '@src/assets/images';
+import { useDispatch } from 'react-redux';
+import { setToken } from '@src/redux/store/auth/authSlice';
 
 const AvatarMenu = () => {
+	const dispatch = useDispatch();
 	const [isModalVisible, setIsModalVisible] = useState(false);
 
 	const handleAvatarPress = () => {
@@ -16,7 +19,7 @@ const AvatarMenu = () => {
 	};
 
 	const handleLogOut = () => {
-		console.log('log out');
+		dispatch(setToken(null));
 		setIsModalVisible(false);
 	};
 

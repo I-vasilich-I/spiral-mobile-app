@@ -38,6 +38,7 @@ const StackNavigation = () => {
 
 	return (
 		<Stack.Navigator
+			initialRouteName="BottomTab"
 			screenOptions={{
 				headerStyle: {
 					backgroundColor: theme.colors?.primary,
@@ -56,7 +57,6 @@ const StackNavigation = () => {
 					<Stack.Screen name="BottomTab" component={BottomTab} options={{ headerShown: false }} />
 					<Stack.Screen name="Checking" component={CheckingScreen} options={checkingOptions} />
 					<Stack.Screen name="Savings" component={SavingScreen} options={savingsOptions} />
-					<Stack.Screen name="SignIn" component={SignInScreen} />
 				</>
 			)}
 		</Stack.Navigator>

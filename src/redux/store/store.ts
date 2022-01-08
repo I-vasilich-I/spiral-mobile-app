@@ -1,6 +1,6 @@
+import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from '@redux-saga/core';
-import { combineReducers } from 'redux';
 import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import rootSaga from '../sagas/rootSaga';
@@ -20,7 +20,7 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export const store = configureStore({
+const store = configureStore({
 	reducer: persistedReducer,
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({
@@ -31,9 +31,11 @@ export const store = configureStore({
 		}).concat(sagaMiddleware),
 });
 
+const persistor = persistStore(store);
+
 sagaMiddleware.run(rootSaga);
 
-export const persistor = persistStore(store);
+export { persistor, store };
 
 export type RootState = ReturnType<typeof store.getState>;
 

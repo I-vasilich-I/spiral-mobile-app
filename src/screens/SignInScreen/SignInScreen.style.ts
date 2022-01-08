@@ -83,6 +83,9 @@ const styles = StyleSheet.create({
 		fontSize: 10,
 		color: theme.colors.primary,
 	},
+	disabledStyle: {
+		backgroundColor: 'grey',
+	},
 });
 
 export default styles;

@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { ScrollView, StatusBar, View } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { Text, Button, Input } from 'react-native-elements';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import useAppSelector from '@src/redux/hooks/useAppSelector';
+import SAGA_ACTIONS from '@src/redux/sagas/sagaActions/sagaActions';
 import styles from './SignInScreen.style';
 
 const SignInScreen = (): JSX.Element => {
+	const dispatch = useDispatch();
+	const { isLoading } = useAppSelector((state) => state.AUTH);
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
@@ -14,6 +19,10 @@ const SignInScreen = (): JSX.Element => {
 
 	const handlePasswordChange = (text: string) => {
 		setPassword(text);
+	};
+
+	const handleLogin = () => {
+		dispatch({ type: SAGA_ACTIONS.AUTH_USER, payload: { email, password } });
 	};
 
 	return (
@@ -55,7 +64,14 @@ const SignInScreen = (): JSX.Element => {
 					</View>
 				</View>
 				<View style={styles.formControl}>
-					<Button title="Login" onPress={() => console.log('login')} containerStyle={styles.LoginButton} />
+					<Button
+						title="Login"
+						onPress={handleLogin}
+						containerStyle={styles.LoginButton}
+						disabledStyle={styles.disabledStyle}
+						loading={isLoading}
+						disabled={isLoading}
+					/>
 					<View style={styles.extraContainer}>
 						<Text style={styles.extraTitle}>Let's test 2 ways to log in</Text>
 						<View style={styles.buttonsContainer}>
