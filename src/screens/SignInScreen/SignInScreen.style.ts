@@ -1,5 +1,5 @@
-import theme from '@src/theme/Theme';
 import { StyleSheet } from 'react-native';
+import theme from '@src/theme/Theme';
 
 const styles = StyleSheet.create({
 	formContainer: {
@@ -75,13 +75,6 @@ const styles = StyleSheet.create({
 	passwordButtonTitle: {
 		letterSpacing: -1,
 		textTransform: 'uppercase',
-	},
-	inputStyle: {
-		padding: 0,
-	},
-	errorStyle: {
-		fontSize: 10,
-		color: theme.colors.primary,
 	},
 	disabledStyle: {
 		backgroundColor: 'grey',

@@ -8,6 +8,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from './redux/store/store';
 import theme from '@src/theme/Theme';
 import StackNavigation from './navigation/StackNavigation';
+import AppFlashMessage from '@components/AppFlashMessage/AppFlashMessage';
 
 const App = () => {
 	return (
@@ -18,6 +19,7 @@ const App = () => {
 						<NavigationContainer>
 							<StatusBar barStyle="light-content" backgroundColor={theme.colors.primary} />
 							<StackNavigation />
+							<AppFlashMessage />
 						</NavigationContainer>
 					</ThemeProvider>
 				</PersistGate>

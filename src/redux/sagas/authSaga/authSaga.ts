@@ -19,7 +19,7 @@ function* signIn({ payload: { email, password } }: IAction) {
 		if (response) {
 			yield put(setToken(response));
 		} else {
-			yield put(setError('Wrong credentials!'));
+			yield put(setError('Wrong email and/or password!'));
 		}
 	} catch (error) {
 		console.error(error);

@@ -1,29 +1,45 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ScrollView, StatusBar, View } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { Text, Button, Input } from 'react-native-elements';
+import { Text, Button } from 'react-native-elements';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { showMessage } from 'react-native-flash-message';
 import useAppSelector from '@src/redux/hooks/useAppSelector';
 import SAGA_ACTIONS from '@src/redux/sagas/sagaActions/sagaActions';
+import { setError } from '@src/redux/store/auth/authSlice';
+import TextInput from '@components/TextInput/TextInput';
 import styles from './SignInScreen.style';
 
 const SignInScreen = (): JSX.Element => {
 	const dispatch = useDispatch();
-	const { isLoading } = useAppSelector((state) => state.AUTH);
+	const { isLoading, authError } = useAppSelector((state) => state.AUTH);
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-
-	const handleEmailChange = (text: string) => {
-		setEmail(text);
-	};
-
-	const handlePasswordChange = (text: string) => {
-		setPassword(text);
-	};
+	const errorDuration = 3000;
+	const isLoginButtonDisabled = isLoading || !(Boolean(email) && Boolean(password));
+	const emailValidation = email ? '' : 'Enter email addres';
+	const passwordValidation = password ? '' : 'Enter password';
 
 	const handleLogin = () => {
 		dispatch({ type: SAGA_ACTIONS.AUTH_USER, payload: { email, password } });
 	};
+
+	useEffect(() => {
+		if (!authError) {
+			return undefined;
+		}
+
+		showMessage({
+			message: authError,
+			type: 'danger',
+		});
+
+		const timer = setTimeout(() => {
+			dispatch(setError(''));
+		}, errorDuration);
+
+		return () => clearTimeout(timer);
+	}, [authError, dispatch]);
 
 	return (
 		<>
@@ -34,25 +50,23 @@ const SignInScreen = (): JSX.Element => {
 						<Text style={styles.title}>Login</Text>
 					</View>
 					<View>
-						<Input
+						<TextInput
 							value={email}
-							onChangeText={handleEmailChange}
-							placeholder="Your email address"
+							setValue={setEmail}
 							label="Email"
-							autoCompleteType
-							keyboardType="email-address"
-							inputStyle={styles.inputStyle}
-							errorStyle={styles.errorStyle}
+							placeholder="Your email address"
+							autoComplete
+							keyboard="email-address"
+							errorMessage={emailValidation}
 						/>
-						<Input
+						<TextInput
 							value={password}
-							onChangeText={handlePasswordChange}
-							placeholder="Password"
+							setValue={setPassword}
 							label="Password"
-							secureTextEntry
-							autoCompleteType
-							inputStyle={styles.inputStyle}
-							errorStyle={styles.errorStyle}
+							placeholder="Password"
+							autoComplete
+							secure
+							errorMessage={passwordValidation}
 						/>
 						<Button
 							title="Forgot password"
@@ -70,7 +84,7 @@ const SignInScreen = (): JSX.Element => {
 						containerStyle={styles.LoginButton}
 						disabledStyle={styles.disabledStyle}
 						loading={isLoading}
-						disabled={isLoading}
+						disabled={isLoginButtonDisabled}
 					/>
 					<View style={styles.extraContainer}>
 						<Text style={styles.extraTitle}>Let's test 2 ways to log in</Text>
