@@ -17,7 +17,7 @@ const SignInScreen = (): JSX.Element => {
 	const [password, setPassword] = useState('');
 	const errorDuration = 3000;
 	const isLoginButtonDisabled = isLoading || !(Boolean(email) && Boolean(password));
-	const emailValidation = email ? '' : 'Enter email addres';
+	const emailValidation = email ? '' : 'Enter email address';
 	const passwordValidation = password ? '' : 'Enter password';
 
 	const handleLogin = () => {
