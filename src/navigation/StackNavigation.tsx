@@ -1,17 +1,19 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { useTheme } from 'react-native-elements';
 import CheckingScreen from '@screens/CheckingScreen/CheckingScreen';
 import SavingScreen from '@screens/SavingScreen/SavingScreen';
-import { useTheme } from 'react-native-elements';
-import AvatarMenu from '@components/AvatarMenu/AvatarMenu';
 import SignInScreen from '@screens/SignInScreen/SignInScreen';
-import BottomTabStack from '@src/navigation/BottomTabStack';
+import AvatarMenu from '@components/AvatarMenu/AvatarMenu';
 import CustomTitle from '@components/CustomTitle/CustomTitle';
+import BottomTabStack from '@src/navigation/BottomTabStack';
+import useAppSelector from '@src/redux/hooks/useAppSelector';
 
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
+	const { token } = useAppSelector((state) => state.AUTH);
 	const { theme } = useTheme();
 	let BottomTab = BottomTabStack;
 
@@ -36,6 +38,7 @@ const StackNavigation = () => {
 
 	return (
 		<Stack.Navigator
+			initialRouteName="BottomTab"
 			screenOptions={{
 				headerStyle: {
 					backgroundColor: theme.colors?.primary,
@@ -47,10 +50,15 @@ const StackNavigation = () => {
 				},
 				headerRight: () => <AvatarMenu />,
 			}}>
-			<Stack.Screen name="BottomTab" component={BottomTab} options={{ headerShown: false }} />
-			<Stack.Screen name="Checking" component={CheckingScreen} options={checkingOptions} />
-			<Stack.Screen name="Savings" component={SavingScreen} options={savingsOptions} />
-			<Stack.Screen name="SignIn" component={SignInScreen} />
+			{!token ? (
+				<Stack.Screen name="SignIn" component={SignInScreen} options={{ headerShown: false }} />
+			) : (
+				<>
+					<Stack.Screen name="BottomTab" component={BottomTab} options={{ headerShown: false }} />
+					<Stack.Screen name="Checking" component={CheckingScreen} options={checkingOptions} />
+					<Stack.Screen name="Savings" component={SavingScreen} options={savingsOptions} />
+				</>
+			)}
 		</Stack.Navigator>
 	);
 };

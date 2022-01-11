@@ -11,8 +11,13 @@ type SignInScreenProp = StackNavigationProp<NavigationParamList, 'SignIn'>;
 const BurgerMenu = () => {
 	const navigation = useNavigation<SignInScreenProp>();
 
+	const handlePress = () => {
+		console.log('burger press');
+		// navigation.navigate('SignIn')
+	};
+
 	return (
-		<TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+		<TouchableOpacity onPress={handlePress}>
 			<Image source={IMAGES.BURGER_MENU_ICON} style={styles.image} />
 		</TouchableOpacity>
 	);
