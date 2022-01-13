@@ -5,12 +5,20 @@ import { Avatar, Text } from 'react-native-elements';
 import IMAGES from '@src/assets/images';
 import { useDispatch } from 'react-redux';
 import { setToken } from '@src/redux/store/auth/authSlice';
+import { useRoute } from '@react-navigation/native';
 
 const AvatarMenu = () => {
 	const dispatch = useDispatch();
+	const route = useRoute();
 	const [isModalVisible, setIsModalVisible] = useState(false);
+	const isDisabled = route.name === 'Home';
+	const opacity = isDisabled ? 1 : undefined;
 
 	const handleAvatarPress = () => {
+		if (isDisabled) {
+			return;
+		}
+
 		setIsModalVisible(true);
 	};
 
@@ -25,7 +33,13 @@ const AvatarMenu = () => {
 
 	return (
 		<>
-			<Avatar rounded source={IMAGES.OVAL} onPress={handleAvatarPress} containerStyle={styles.avatarContainer} />
+			<Avatar
+				activeOpacity={opacity}
+				rounded
+				source={IMAGES.OVAL}
+				onPress={handleAvatarPress}
+				containerStyle={styles.avatarContainer}
+			/>
 			<Modal visible={isModalVisible} animationType="fade" transparent>
 				<TouchableWithoutFeedback onPress={hideModal}>
 					<View style={styles.userMenuOverlay} />

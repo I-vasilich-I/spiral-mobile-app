@@ -12,6 +12,11 @@ const theme = {
 			borderRadius: 15,
 		},
 	},
+	Card: {
+		containerStyle: {
+			paddingBottom: 0,
+		},
+	},
 	colors: {
 		primary: '#D73374',
 	},

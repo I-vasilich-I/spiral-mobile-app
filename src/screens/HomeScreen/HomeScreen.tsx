@@ -1,36 +1,23 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { Button, Text } from 'react-native-elements';
+import { View } from 'react-native';
+import { Text } from 'react-native-elements';
+import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { NavigationParamList } from '@src/types';
-
-type HomeScreenProp = StackNavigationProp<NavigationParamList, 'Home'>;
+import { getGreeting } from '@src/helpers';
+import AccountCard from './AccountCard/AccountCard';
+import styles from './HomeScreen.style';
 
 const HomeScreen = (): JSX.Element => {
-	const navigation = useNavigation<HomeScreenProp>();
-
 	return (
 		<SafeAreaView>
 			<View style={styles.container}>
-				<Text>This is Home screen</Text>
-				<Button
-					title="Go to Checking"
-					onPress={() => navigation.navigate('Checking', { subtitle: 'checking subtitle' })}
-				/>
-				<Button
-					title="Go to Savings"
-					onPress={() => navigation.navigate('Savings', { subtitle: 'savings subtitle' })}
-				/>
+				<Text style={styles.greeting}>{getGreeting('Mike')}</Text>
+				<ScrollView style={styles.scrollView}>
+					<AccountCard />
+				</ScrollView>
 			</View>
 		</SafeAreaView>
 	);
 };
-
-const styles = StyleSheet.create({
-	container: { display: 'flex', alignItems: 'center' },
-});
 
 export default HomeScreen;
