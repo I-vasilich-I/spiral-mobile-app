@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
 		display: 'flex',
 		alignItems: 'center',
 		padding: 10,
+		paddingBottom: 60,
 	},
 	greeting: {
 		alignSelf: 'flex-start',

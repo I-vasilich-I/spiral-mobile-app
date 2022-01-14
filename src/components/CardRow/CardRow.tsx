@@ -27,8 +27,8 @@ const CardRow = ({ title, subtitle, amount, icon = null, onPress = undefined, bo
 				onPress={onPress}>
 				<ListItem.Content>
 					<ListItem.Content style={styles.titleContainer}>
-						<ListItem.Title style={styles.title}>
-							<Text>{title}</Text>
+						<ListItem.Title style={styles.margin}>
+							<Text style={styles.title}>{title}</Text>
 						</ListItem.Title>
 						{icon}
 					</ListItem.Content>

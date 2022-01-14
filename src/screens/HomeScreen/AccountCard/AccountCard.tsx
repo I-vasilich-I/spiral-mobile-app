@@ -46,22 +46,20 @@ const AccountCard = (): JSX.Element => {
 	const totalAmount = rows.reduce((acc, b) => acc + b.amount * 100, 0) / 100;
 
 	return (
-		<View>
-			<Card>
-				<Card.Title>
-					<View>
-						<Text style={styles.title}>Accounts Overview</Text>
-						<Text style={styles.amount}>
-							<AmountText amount={totalAmount} mainFontSize={30} secondaryFontSize={20} />
-						</Text>
-						<Text style={styles.subtitle}>Total available cash</Text>
-					</View>
-				</Card.Title>
-				{rows.map((elem) => (
-					<CardRow key={elem.title} {...elem} />
-				))}
-			</Card>
-		</View>
+		<Card>
+			<Card.Title>
+				<View>
+					<Text style={styles.title}>Accounts Overview</Text>
+					<Text style={styles.amount}>
+						<AmountText amount={totalAmount} mainFontSize={30} secondaryFontSize={20} />
+					</Text>
+					<Text style={styles.subtitle}>Total available cash</Text>
+				</View>
+			</Card.Title>
+			{rows.map((elem) => (
+				<CardRow key={elem.title} {...elem} />
+			))}
+		</Card>
 	);
 };
 

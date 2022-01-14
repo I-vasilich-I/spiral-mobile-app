@@ -1,12 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-	card: {
-		marginBottom: 0,
-	},
 	view: {
 		paddingBottom: 10,
 		margin: 0,
+		marginTop: 5,
 	},
 	container: {
 		padding: 0,
@@ -23,6 +21,9 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	title: {
+		lineHeight: 16,
+	},
+	margin: {
 		marginRight: 10,
 	},
 	subtitle: {
