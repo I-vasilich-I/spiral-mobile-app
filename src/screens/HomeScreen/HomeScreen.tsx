@@ -1,21 +1,21 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import 'react-native-get-random-values';
 import React from 'react';
-import { FlatList, ScrollView, View } from 'react-native';
+import { FlatList } from 'react-native';
 import { Text } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { v4 as uuidv4 } from 'uuid';
 import { getGreeting } from '@src/helpers';
-import AccountCard from './AccountCard/AccountCard';
-import styles from './HomeScreen.style';
-import GivingCard from './GivingCard/GivingCard';
 import IMAGES from '@src/assets/images';
 import { ICard } from '@src/types';
+import AccountCard from './AccountCard/AccountCard';
+import GivingCard from './GivingCard/GivingCard';
+import styles from './HomeScreen.style';
 
 interface IProps {
 	item: ICard;
 }
-//TODO: fix ScrollView/FlatList;
+
 const HomeScreen = (): JSX.Element => {
 	const cards = [
 		{
@@ -43,10 +43,12 @@ const HomeScreen = (): JSX.Element => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<Text style={styles.greeting}>{getGreeting('Mike')}</Text>
-			<ScrollView style={styles.scrollView}>
-				<AccountCard />
-				<FlatList data={cards} renderItem={renderItem} keyExtractor={(item) => item.id} />
-			</ScrollView>
+			<FlatList
+				data={cards}
+				renderItem={renderItem}
+				keyExtractor={(item) => item.id}
+				ListHeaderComponent={AccountCard}
+			/>
 		</SafeAreaView>
 	);
 };
