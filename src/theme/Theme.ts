@@ -8,7 +8,6 @@ const theme = {
 	Button: {
 		containerStyle: {
 			margin: 5,
-			width: 200,
 			borderRadius: 15,
 		},
 	},

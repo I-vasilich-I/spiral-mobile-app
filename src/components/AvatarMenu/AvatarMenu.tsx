@@ -1,14 +1,21 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import { Modal, Pressable, StyleSheet, View } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { Avatar, Text } from 'react-native-elements';
-import IMAGES from '@src/assets/images';
+import { Avatar, Divider, Text } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
 import { setToken } from '@src/redux/store/auth/authSlice';
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { NavigationParamList } from '@src/types';
+import useAppSelector from '@src/redux/hooks/useAppSelector';
+
+type ProfileScreenProp = StackNavigationProp<NavigationParamList, 'Profile'>;
 
 const AvatarMenu = () => {
 	const dispatch = useDispatch();
+	const navigation = useNavigation<ProfileScreenProp>();
+	const { photo } = useAppSelector((state) => state.USER);
 	const route = useRoute();
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	const isDisabled = route.name === 'Home';
@@ -31,12 +38,17 @@ const AvatarMenu = () => {
 		setIsModalVisible(false);
 	};
 
+	const handleProfileClick = () => {
+		setIsModalVisible(false);
+		navigation.navigate('Profile');
+	};
+
 	return (
 		<>
 			<Avatar
 				activeOpacity={opacity}
 				rounded
-				source={IMAGES.OVAL}
+				source={{ uri: photo }}
 				onPress={handleAvatarPress}
 				containerStyle={styles.avatarContainer}
 			/>
@@ -45,6 +57,10 @@ const AvatarMenu = () => {
 					<View style={styles.userMenuOverlay} />
 				</TouchableWithoutFeedback>
 				<View style={styles.modalContainer}>
+					<Pressable onPress={handleProfileClick}>
+						<Text>Profile</Text>
+					</Pressable>
+					<Divider inset={true} insetType="middle" />
 					<Pressable onPress={handleLogOut}>
 						<Text>Log out</Text>
 					</Pressable>
@@ -60,7 +76,7 @@ const styles = StyleSheet.create({
 	},
 	modalContainer: {
 		width: 100,
-		height: 30,
+		paddingHorizontal: 20,
 		position: 'absolute',
 		right: 5,
 		top: 50,
@@ -72,7 +88,7 @@ const styles = StyleSheet.create({
 		borderRadius: 10,
 		display: 'flex',
 		alignItems: 'center',
-		justifyContent: 'center',
+		justifyContent: 'space-between',
 	},
 	Text: {
 		color: 'white',

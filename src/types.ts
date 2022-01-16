@@ -11,6 +11,7 @@ export type NavigationParamList = {
 	Savings: { subtitle: string };
 	SignIn: undefined;
 	BottomTab: undefined;
+	Profile: undefined;
 };
 
 export interface ICard {
