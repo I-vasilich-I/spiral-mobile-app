@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { ImageSourcePropType } from 'react-native';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 
 const photoService = {
@@ -10,7 +8,7 @@ const photoService = {
 		}
 
 		const { uri } = res.assets[0];
-		return uri as ImageSourcePropType;
+		return uri;
 	},
 	async takePhoto() {
 		const res = await launchCamera({ mediaType: 'photo', cameraType: 'front' });
@@ -19,7 +17,7 @@ const photoService = {
 		}
 
 		const { uri } = res.assets[0];
-		return uri as ImageSourcePropType;
+		return uri;
 	},
 };
 

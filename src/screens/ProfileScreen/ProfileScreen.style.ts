@@ -3,24 +3,20 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
 	mainContainer: {
 		padding: 10,
+		flex: 1,
 		paddingTop: 20,
 		alignItems: 'center',
+		justifyContent: 'space-between',
 	},
-	imageContainer: {
-		width: 150,
-		height: 150,
-		padding: 0,
-		borderWidth: 5,
-		borderRadius: 150,
-		borderColor: '#DBDFE4',
+	container: {
+		width: '100%',
+		alignItems: 'center',
 	},
-	imageFABContainer: {
-		position: 'absolute',
-		bottom: 0,
-		width: 150,
+	controlContainer: {
+		width: '100%',
 		flexDirection: 'row',
 		alignItems: 'center',
-		justifyContent: 'space-between',
+		justifyContent: 'space-evenly',
 	},
 });
 

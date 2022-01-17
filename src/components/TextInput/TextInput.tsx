@@ -13,6 +13,7 @@ interface IProps {
 	secure?: boolean;
 	autoComplete?: boolean;
 	errorMessage?: string;
+	disabled?: boolean;
 }
 
 const TextInput = ({
@@ -24,6 +25,7 @@ const TextInput = ({
 	autoComplete = true,
 	keyboard = undefined,
 	errorMessage = '',
+	disabled = false,
 }: IProps) => {
 	const handleValueChange = (text: string) => {
 		setValue(text);
@@ -41,6 +43,7 @@ const TextInput = ({
 			errorMessage={errorMessage}
 			inputStyle={styles.inputStyle}
 			errorStyle={styles.errorStyle}
+			disabled={disabled}
 		/>
 	);
 };

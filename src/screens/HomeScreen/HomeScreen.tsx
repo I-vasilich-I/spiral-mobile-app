@@ -5,6 +5,7 @@ import { FlatList } from 'react-native';
 import { Text } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { v4 as uuidv4 } from 'uuid';
+import useAppSelector from '@src/redux/hooks/useAppSelector';
 import { getGreeting } from '@src/helpers';
 import IMAGES from '@src/assets/images';
 import { ICard } from '@src/types';
@@ -17,14 +18,14 @@ interface IProps {
 }
 
 const HomeScreen = (): JSX.Element => {
+	const { fullName } = useAppSelector((state) => state.USER);
 	const cards = [
 		{
 			id: uuidv4(),
 			title: 'Your Giving Impact',
 			charityName: 'St. Jude',
 			time: '4 hrs ago',
-			description:
-				'Denny, Your donation helped 5 amazing kids get much needed cancer surgery, thanks for being amazing!',
+			description: `${fullName}, Your donation helped 5 amazing kids get much needed cancer surgery, thanks for being amazing!`,
 			imageSource: IMAGES.RECTANGLE2,
 		},
 		{
@@ -32,8 +33,7 @@ const HomeScreen = (): JSX.Element => {
 			title: 'Your Giving Impact',
 			charityName: 'St. Jude',
 			time: '4 hrs ago',
-			description:
-				'Denny, Your donation helped 5 amazing kids get much needed cancer surgery, thanks for being amazing!',
+			description: `${fullName}, Your donation helped 5 amazing kids get much needed cancer surgery, thanks for being amazing!`,
 			imageSource: IMAGES.RECTANGLE,
 		},
 	];
@@ -42,7 +42,7 @@ const HomeScreen = (): JSX.Element => {
 
 	return (
 		<SafeAreaView style={styles.container}>
-			<Text style={styles.greeting}>{getGreeting('Mike')}</Text>
+			<Text style={styles.greeting}>{getGreeting(fullName)}</Text>
 			<FlatList
 				data={cards}
 				renderItem={renderItem}
