@@ -5,7 +5,7 @@ import IMAGES from '@src/assets/images';
 
 const BurgerMenu = () => {
 	const route = useRoute();
-	const isDisabled = route.name === 'Home';
+	const isDisabled = route.name === 'Home' || route.name === 'Accounts';
 
 	const handlePress = () => {
 		console.log('burger press');

@@ -18,7 +18,7 @@ const AvatarMenu = () => {
 	const { photo } = useAppSelector((state) => state.USER);
 	const route = useRoute();
 	const [isModalVisible, setIsModalVisible] = useState(false);
-	const isDisabled = route.name === 'Home';
+	const isDisabled = route.name === 'Home' || route.name === 'Accounts';
 	const opacity = isDisabled ? 1 : undefined;
 
 	const handleAvatarPress = () => {

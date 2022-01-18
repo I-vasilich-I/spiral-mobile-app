@@ -41,24 +41,22 @@ const ProfilePhoto = ({ isEditMode, photo, setPhoto }: IProps): JSX.Element => {
 	return (
 		<View>
 			<Image source={{ uri: photo }} containerStyle={styles.imageContainer} />
-			{isEditMode ? (
-				<View style={styles.imageFABContainer}>
-					<FAB
-						visible={true}
-						icon={<MaterialIcons name="add-a-photo" size={20} color="white" />}
-						color={theme.colors?.primary}
-						size="small"
-						onPress={handleCamera}
-					/>
-					<FAB
-						visible={true}
-						icon={<MaterialIcons name="add-photo-alternate" size={20} color="white" />}
-						color={theme.colors?.primary}
-						size="small"
-						onPress={handleImagePick}
-					/>
-				</View>
-			) : null}
+			<View style={styles.imageFABContainer}>
+				<FAB
+					visible={isEditMode}
+					icon={<MaterialIcons name="add-a-photo" size={20} color="white" />}
+					color={theme.colors?.primary}
+					size="small"
+					onPress={handleCamera}
+				/>
+				<FAB
+					visible={isEditMode}
+					icon={<MaterialIcons name="add-photo-alternate" size={20} color="white" />}
+					color={theme.colors?.primary}
+					size="small"
+					onPress={handleImagePick}
+				/>
+			</View>
 		</View>
 	);
 };
