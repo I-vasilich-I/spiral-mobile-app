@@ -15,19 +15,27 @@ const ProfilePhoto = ({ isEditMode, photo, setPhoto }: IProps): JSX.Element => {
 	const { theme } = useTheme();
 
 	const handleImagePick = async () => {
-		const res = await photoService.pickPhoto();
-		if (!res) {
-			return;
+		try {
+			const res = await photoService.pickPhoto();
+			if (!res) {
+				return;
+			}
+			setPhoto(res);
+		} catch (error) {
+			console.error(error);
 		}
-		setPhoto(res);
 	};
 
 	const handleCamera = async () => {
-		const res = await photoService.takePhoto();
-		if (!res) {
-			return;
+		try {
+			const res = await photoService.takePhoto();
+			if (!res) {
+				return;
+			}
+			setPhoto(res);
+		} catch (error) {
+			console.error(error);
 		}
-		setPhoto(res);
 	};
 
 	return (
