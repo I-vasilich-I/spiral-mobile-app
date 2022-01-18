@@ -5,11 +5,13 @@ import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, R
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import rootSaga from '../sagas/rootSaga';
 import authReducer from './auth/authSlice';
+import userReducer from './user/userSlice';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
 	AUTH: authReducer,
+	USER: userReducer,
 });
 
 const persistConfig = {

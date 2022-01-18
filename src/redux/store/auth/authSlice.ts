@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { PURGE } from 'redux-persist';
 
 interface IAuth {
 	authError?: string;

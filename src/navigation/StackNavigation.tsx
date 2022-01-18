@@ -3,6 +3,7 @@ import { Platform } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useTheme } from 'react-native-elements';
 import CheckingScreen from '@screens/CheckingScreen/CheckingScreen';
+import ProfileScreen from '@screens/ProfileScreen/ProfileScreen';
 import SavingScreen from '@screens/SavingScreen/SavingScreen';
 import SignInScreen from '@screens/SignInScreen/SignInScreen';
 import AvatarMenu from '@components/AvatarMenu/AvatarMenu';
@@ -57,6 +58,7 @@ const StackNavigation = () => {
 					<Stack.Screen name="BottomTab" component={BottomTab} options={{ headerShown: false }} />
 					<Stack.Screen name="Checking" component={CheckingScreen} options={checkingOptions} />
 					<Stack.Screen name="Savings" component={SavingScreen} options={savingsOptions} />
+					<Stack.Screen name="Profile" component={ProfileScreen} />
 				</>
 			)}
 		</Stack.Navigator>

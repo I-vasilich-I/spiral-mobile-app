@@ -8,8 +8,12 @@ const theme = {
 	Button: {
 		containerStyle: {
 			margin: 5,
-			width: 200,
 			borderRadius: 15,
+		},
+	},
+	Card: {
+		containerStyle: {
+			paddingBottom: 0,
 		},
 	},
 	colors: {
