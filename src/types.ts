@@ -28,3 +28,10 @@ export interface IMoneyActionButton {
 	image: ImageSourcePropType;
 	onPress: () => void;
 }
+
+export interface ITransactionCard {
+	title: string;
+	subtitle: string;
+	amount: number;
+	income: 'none' | 'regular' | 'special';
+}

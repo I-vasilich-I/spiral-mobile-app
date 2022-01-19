@@ -25,7 +25,7 @@ const AccountsScreen = (): JSX.Element => {
 			amount: 1500.2,
 			icon: null,
 			bottomDivider: false,
-			onPress: () => navigation.navigate('Checking', { subtitle: 'checking subtitle' }),
+			onPress: () => navigation.navigate('Checking', { subtitle: 'Main account (..0353)' }),
 			message: '',
 		},
 		{
