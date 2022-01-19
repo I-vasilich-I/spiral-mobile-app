@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import { Modal, Pressable, StyleSheet, View } from 'react-native';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { Avatar, Divider, Text } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
 import { setToken } from '@src/redux/store/auth/authSlice';
@@ -18,7 +17,7 @@ const AvatarMenu = () => {
 	const { photo } = useAppSelector((state) => state.USER);
 	const route = useRoute();
 	const [isModalVisible, setIsModalVisible] = useState(false);
-	const isDisabled = route.name === 'Home';
+	const isDisabled = route.name === 'Home' || route.name === 'Accounts';
 	const opacity = isDisabled ? 1 : undefined;
 
 	const handleAvatarPress = () => {
@@ -53,9 +52,7 @@ const AvatarMenu = () => {
 				containerStyle={styles.avatarContainer}
 			/>
 			<Modal visible={isModalVisible} animationType="fade" transparent>
-				<TouchableWithoutFeedback onPress={hideModal}>
-					<View style={styles.userMenuOverlay} />
-				</TouchableWithoutFeedback>
+				<Pressable onPress={hideModal} style={styles.userMenuOverlay} />
 				<View style={styles.modalContainer}>
 					<Pressable onPress={handleProfileClick}>
 						<Text>Profile</Text>

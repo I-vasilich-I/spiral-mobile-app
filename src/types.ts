@@ -22,3 +22,9 @@ export interface ICard {
 	description: string;
 	imageSource: ImageSourcePropType;
 }
+
+export interface IMoneyActionButton {
+	title: string;
+	image: ImageSourcePropType;
+	onPress: () => void;
+}
