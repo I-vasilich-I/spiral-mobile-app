@@ -34,7 +34,7 @@ const AccountsScreen = (): JSX.Element => {
 			amount: 5000.2,
 			icon: null,
 			bottomDivider: false,
-			onPress: () => navigation.navigate('Savings', { subtitle: 'savings subtitle' }),
+			onPress: () => navigation.navigate('Savings', { subtitle: 'Buy a house (..4044)' }),
 			message: 'Savings is up 3% from last month',
 		},
 		{

@@ -14,6 +14,8 @@ export type NavigationParamList = {
 	Profile: undefined;
 };
 
+export type Income = 'none' | 'regular' | 'special';
+
 export interface ICard {
 	id: string;
 	title: string;
@@ -30,8 +32,19 @@ export interface IMoneyActionButton {
 }
 
 export interface ITransactionCard {
+	id: string;
 	title: string;
 	subtitle: string;
 	amount: number;
-	income: 'none' | 'regular' | 'special';
+	income: Income;
+}
+
+export interface ITransaction extends ITransactionCard {
+	date: string;
+}
+
+export interface IFormatted {
+	int: string;
+	frac: string;
+	formattedNumber: string;
 }

@@ -2,6 +2,7 @@
 import React from 'react';
 import { ColorValue } from 'react-native';
 import { Text } from 'react-native-elements';
+import { getFormattedNumber } from '@src/helpers';
 
 interface IProps {
 	amount: number;
@@ -11,15 +12,12 @@ interface IProps {
 }
 
 const AmountText = ({ amount, mainFontSize = 20, secondaryFontSize = 15, color = undefined }: IProps): JSX.Element => {
-	const wholeNumber = Math.trunc(amount);
-	const fractionalNumber = Math.trunc((amount * 100) % wholeNumber);
-	const formattedWholeNumber = wholeNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-	const formattedFractionalNumber = fractionalNumber < 10 ? `0${fractionalNumber}` : fractionalNumber;
+	const { int, frac } = getFormattedNumber(amount);
 
 	return (
 		<Text style={{ fontSize: mainFontSize, color }}>
-			${formattedWholeNumber}
-			<Text style={{ fontSize: secondaryFontSize, color }}>.{formattedFractionalNumber}</Text>
+			${int}
+			<Text style={{ fontSize: secondaryFontSize, color }}>.{frac}</Text>
 		</Text>
 	);
 };

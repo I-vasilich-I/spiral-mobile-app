@@ -31,7 +31,7 @@ const AccountCard = (): JSX.Element => {
 			amount: 5000.2,
 			icon: null,
 			bottomDivider: true,
-			onPress: () => navigation.navigate('Savings', { subtitle: 'savings subtitle' }),
+			onPress: () => navigation.navigate('Savings', { subtitle: 'Buy a house (..4044)' }),
 		},
 		{
 			title: 'Goodness',

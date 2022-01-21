@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import dateFormat from 'dateformat';
+import { IFormatted } from './types';
 
-const getGreeting = (user: string) => {
+const getGreeting = (user: string): string => {
 	const today = new Date();
 	const hours = today.getHours();
 	const isMorning = hours >= 4 && hours < 12;
@@ -19,4 +21,18 @@ const getGreeting = (user: string) => {
 	return `Good Night ${user} | ${date}`;
 };
 
-export { getGreeting };
+const getSeparatedNumber = (number: number, separator = ','): string => {
+	return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+};
+
+const getFormattedNumber = (number: number): IFormatted => {
+	const wholeNumber = Math.trunc(number);
+	const fractionalNumber = Math.trunc((number * 100) % wholeNumber);
+	const formattedWholeNumber = getSeparatedNumber(wholeNumber);
+	const formattedFractionalNumber = `${fractionalNumber < 10 ? '0' : ''}${fractionalNumber}`;
+	const formattedNumber = `${formattedWholeNumber}.${formattedFractionalNumber}`;
+
+	return { int: formattedWholeNumber, frac: formattedFractionalNumber, formattedNumber };
+};
+
+export { getGreeting, getSeparatedNumber, getFormattedNumber };
