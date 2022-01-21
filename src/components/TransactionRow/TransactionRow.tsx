@@ -2,11 +2,18 @@
 import React from 'react';
 import { Image, ListItem, Text } from 'react-native-elements';
 import AmountText from '@components/AmountText/AmountText';
+import { Income } from '@src/types';
 import IMAGES from '@src/assets/images';
-import { ITransactionCard } from '@src/types';
 import styles from './TransactionRow.style';
 
-const TransactionRow = ({ title, subtitle, amount, income }: ITransactionCard): JSX.Element => {
+interface IProps {
+	title: string;
+	subtitle: string;
+	amount: number;
+	income: Income;
+}
+
+const TransactionRow = ({ title, subtitle, amount, income }: IProps): JSX.Element => {
 	const isSpecial = income === 'special';
 	const isRegular = income === 'regular';
 	const isTitleGreen = isRegular || isSpecial;

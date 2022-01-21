@@ -2,7 +2,8 @@
 import React from 'react';
 import { SafeAreaView, FlatList } from 'react-native';
 import { Text } from 'react-native-elements';
-import { ITransactionCard } from '@src/types';
+import { v4 as uuidv4 } from 'uuid';
+import { ITransaction, ITransactionCard } from '@src/types';
 import AmountText from '@components/AmountText/AmountText';
 import SearchTransactions from '@components/SearchTransactions/SearchTransactions';
 import TransactionCard from './TransactionCard/TransactionCard';
@@ -12,10 +13,6 @@ interface ICards {
 	[key: string]: ITransactionCard[];
 }
 
-interface ITransaction extends ITransactionCard {
-	date: string;
-}
-
 interface IProps {
 	item: [key: string, value: ITransactionCard[]];
 }
@@ -23,6 +20,7 @@ interface IProps {
 const CheckingScreen = (): JSX.Element => {
 	const transactions: ITransaction[] = [
 		{
+			id: uuidv4(),
 			date: 'Jul 11',
 			title: 'Target',
 			subtitle: 'Closter NJ | Debit card',
@@ -30,6 +28,7 @@ const CheckingScreen = (): JSX.Element => {
 			income: 'none',
 		},
 		{
+			id: uuidv4(),
 			date: 'Jul 11',
 			title: 'AplPay 7-Eleven',
 			subtitle: 'Cresskill NJ | iPhone',
@@ -37,6 +36,7 @@ const CheckingScreen = (): JSX.Element => {
 			income: 'none',
 		},
 		{
+			id: uuidv4(),
 			date: 'Jul 11',
 			title: 'Facebook inc',
 			subtitle: 'Pay day! Yay!',
@@ -44,6 +44,7 @@ const CheckingScreen = (): JSX.Element => {
 			income: 'special',
 		},
 		{
+			id: uuidv4(),
 			date: 'Jul 11',
 			title: 'Lencrafters',
 			subtitle: 'Paramus NJ | Debit card',
@@ -51,6 +52,7 @@ const CheckingScreen = (): JSX.Element => {
 			income: 'none',
 		},
 		{
+			id: uuidv4(),
 			date: 'Jul 10',
 			title: 'Transfer from savings',
 			subtitle: 'Buy house (..4044)',
@@ -58,6 +60,7 @@ const CheckingScreen = (): JSX.Element => {
 			income: 'regular',
 		},
 		{
+			id: uuidv4(),
 			date: 'Jul 10',
 			title: 'Starbucks',
 			subtitle: 'Closter NJ | Debit card',
@@ -65,6 +68,7 @@ const CheckingScreen = (): JSX.Element => {
 			income: 'none',
 		},
 		{
+			id: uuidv4(),
 			date: 'Jul 10',
 			title: 'Stop and Shop',
 			subtitle: 'Closter NJ | Debit card',
@@ -72,6 +76,7 @@ const CheckingScreen = (): JSX.Element => {
 			income: 'none',
 		},
 		{
+			id: uuidv4(),
 			date: 'Jul 10',
 			title: 'Starbucks',
 			subtitle: 'Closter NJ | Debit card',
@@ -79,6 +84,7 @@ const CheckingScreen = (): JSX.Element => {
 			income: 'none',
 		},
 		{
+			id: uuidv4(),
 			date: 'Jul 10',
 			title: 'Stop and Shop',
 			subtitle: 'Closter NJ | Debit card',
@@ -86,6 +92,7 @@ const CheckingScreen = (): JSX.Element => {
 			income: 'none',
 		},
 		{
+			id: uuidv4(),
 			date: 'Jul 10',
 			title: 'Starbucks',
 			subtitle: 'Closter NJ | Debit card',
@@ -93,6 +100,7 @@ const CheckingScreen = (): JSX.Element => {
 			income: 'none',
 		},
 		{
+			id: uuidv4(),
 			date: 'Jul 10',
 			title: 'Stop and Shop',
 			subtitle: 'Closter NJ | Debit card',
