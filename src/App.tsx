@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import SplashScreen from 'react-native-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { ThemeProvider } from 'react-native-elements';
 import { Provider as ReduxProvider } from 'react-redux';
@@ -11,6 +12,10 @@ import StackNavigation from './navigation/StackNavigation';
 import AppFlashMessage from '@components/AppFlashMessage/AppFlashMessage';
 
 const App = () => {
+	useEffect(() => {
+		SplashScreen.hide();
+	}, []);
+
 	return (
 		<SafeAreaProvider>
 			<ReduxProvider store={store}>
