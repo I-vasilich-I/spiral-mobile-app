@@ -1,16 +1,10 @@
 package com.reactnativelab;
 
 import com.facebook.react.ReactActivity;
-import org.devio.rn.splashscreen.SplashScreen;
-import android.os.Bundle;
+import com.facebook.react.ReactActivityDelegate;
+import com.zoontek.rnbootsplash.RNBootSplash;
 
 public class MainActivity extends ReactActivity {
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-			SplashScreen.show(this);
-			super.onCreate(savedInstanceState);
-	}
 
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
@@ -19,5 +13,17 @@ public class MainActivity extends ReactActivity {
   @Override
   protected String getMainComponentName() {
     return "ReactNativeLab";
+  }
+
+	@Override
+  protected ReactActivityDelegate createReactActivityDelegate() {
+    return new ReactActivityDelegate(this, getMainComponentName()) {
+
+      @Override
+      protected void loadApp(String appKey) {
+        RNBootSplash.init(MainActivity.this); // <- initialize the splash screen
+        super.loadApp(appKey);
+      }
+    };
   }
 }
