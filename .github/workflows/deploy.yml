@@ -1,0 +1,48 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ main, development ]
+  pull_request:
+    branches: [ main, development ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
+
+      - name: Install Bundle
+        working-directory: ./android
+        run: |
+          gem install bundle
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: Install Project Dependencies
+        working-directory: ./
+        run: |
+          npm install
+          ./gradlew clean
+          ./gradlew assembleRelease
+
+      - name: Create Firebase Service Credentials File
+        working-directory: ./android
+        run: |
+          echo "$FIREBASE_CREDENTIALS" > firebase_credentials.json.b64
+          base64 -d -i firebase_credentials.json.b64 > firebase_credentials.json
+        env:
+          FIREBASE_CREDENTIALS: ${{ secrets.FIREBASE_CREDENTIALS }}
+
+      - name: Deploy
+        working-directory: ./android
+        run: bundle exec fastlane deploy
+        env:
+          FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
