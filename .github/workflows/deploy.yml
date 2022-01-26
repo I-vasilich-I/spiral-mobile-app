@@ -30,8 +30,8 @@ jobs:
         working-directory: ./
         run: |
           npm install
-          ./android/gradlew clean
-          ./android/gradlew assembleRelease
+          ./gradlew clean
+          ./gradlew assembleRelease
 
       - name: Create Firebase Service Credentials File
         working-directory: ./android
