@@ -42,8 +42,8 @@ jobs:
         env:
           FIREBASE_CREDENTIALS: ${{ secrets.FIREBASE_CREDENTIALS }}
 
-      - name: Deploy
+      - name: distribute
         working-directory: ./android
-        run: bundle exec fastlane deploy
+        run: bundle exec fastlane distribute
         env:
           FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
