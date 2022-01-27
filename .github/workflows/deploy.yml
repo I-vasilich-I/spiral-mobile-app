@@ -30,6 +30,7 @@ jobs:
         working-directory: ./
         run: |
           npm install
+          cd android
           ./gradlew clean
           ./gradlew assembleRelease
 
