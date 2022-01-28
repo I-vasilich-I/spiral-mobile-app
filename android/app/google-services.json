@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "288921921792",
+    "project_id": "react-native-lab-itag",
+    "storage_bucket": "react-native-lab-itag.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:288921921792:android:ae89832a90f42bb0462be5",
+        "android_client_info": {
+          "package_name": "com.reactnativelab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "288921921792-ul7o29msdaes5s7a7h2qcs0a53u688lt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATW2bWvQSHmFalLB_LQD6FFHP7dS8-6t4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "288921921792-ul7o29msdaes5s7a7h2qcs0a53u688lt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
