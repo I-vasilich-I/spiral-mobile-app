@@ -19,6 +19,7 @@ const AvatarMenu = () => {
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	const isDisabled = route.name === 'Home' || route.name === 'Accounts';
 	const opacity = isDisabled ? 1 : undefined;
+	const photoSource = typeof photo === 'string' ? { uri: photo } : photo;
 
 	const handleAvatarPress = () => {
 		if (isDisabled) {
@@ -47,7 +48,7 @@ const AvatarMenu = () => {
 			<Avatar
 				activeOpacity={opacity}
 				rounded
-				source={{ uri: photo }}
+				source={photoSource}
 				onPress={handleAvatarPress}
 				containerStyle={styles.avatarContainer}
 			/>

@@ -48,3 +48,5 @@ export interface IFormatted {
 	frac: string;
 	formattedNumber: string;
 }
+
+export type TPhoto = ImageSourcePropType | string;
