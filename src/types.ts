@@ -23,6 +23,9 @@ export interface ICard {
 	time: string;
 	description: string;
 	imageSource: ImageSourcePropType;
+	videoId: string;
+	currentId?: number;
+	currentVisibleIndex?: number;
 }
 
 export interface IMoneyActionButton {
