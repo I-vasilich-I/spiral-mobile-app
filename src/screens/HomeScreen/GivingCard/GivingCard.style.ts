@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
 		fontSize: 12,
 		paddingLeft: 5,
 	},
+	image: {
+		height: 200,
+	},
 });
 
 export default styles;

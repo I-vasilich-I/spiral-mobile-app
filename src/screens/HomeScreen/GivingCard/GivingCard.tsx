@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import { Avatar, Button, Card, Text, useTheme } from 'react-native-elements';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
-import VideoPlayer from '@components/VideoPlayer/VideoPlayer';
+import YouTubePlayer from '@components/YouTubePlayer/YouTubePlayer';
 import IMAGES from '@src/assets/images';
 import { ICard } from '@src/types';
 import styles from './GivingCard.style';
@@ -41,8 +41,8 @@ const GivingCard = ({
 					</View>
 				</Card.Title>
 			</View>
-			<Card.Image source={imageSource}>
-				{isVideoShown ? <VideoPlayer videoId={videoId} isPlaying={isVideoShown} /> : null}
+			<Card.Image source={imageSource} style={styles.image}>
+				{isVideoShown ? <YouTubePlayer videoId={videoId} /> : null}
 			</Card.Image>
 			<Text>{description}</Text>
 			<Button
