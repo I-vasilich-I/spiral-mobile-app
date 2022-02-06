@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import { View } from 'react-native';
+import { Image, View } from 'react-native';
 import { Avatar, Button, Card, Text, useTheme } from 'react-native-elements';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
-import YouTubePlayer from '@components/YouTubePlayer/YouTubePlayer';
+import VideoWithControls from '@components/VideoWithControls/VideoWithControls';
 import IMAGES from '@src/assets/images';
 import { ICard } from '@src/types';
 import styles from './GivingCard.style';
@@ -15,8 +15,8 @@ const GivingCard = ({
 	time,
 	description,
 	imageSource,
-	videoId,
 	currentId,
+	videoSource,
 	currentVisibleIndex,
 }: ICard): JSX.Element => {
 	const { theme } = useTheme();
@@ -41,9 +41,7 @@ const GivingCard = ({
 					</View>
 				</Card.Title>
 			</View>
-			<Card.Image source={imageSource} style={styles.image}>
-				{isVideoShown ? <YouTubePlayer videoId={videoId} /> : null}
-			</Card.Image>
+			<VideoWithControls source={videoSource} isPaused={!isVideoShown} poster={imageSource} />
 			<Text>{description}</Text>
 			<Button
 				title="Share to spread the word"

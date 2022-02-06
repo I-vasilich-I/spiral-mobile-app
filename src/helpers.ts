@@ -32,7 +32,11 @@ const getFormattedNumber = (number: number): IFormatted => {
 	const formattedFractionalNumber = `${fractionalNumber < 10 ? '0' : ''}${fractionalNumber}`;
 	const formattedNumber = `${formattedWholeNumber}.${formattedFractionalNumber}`;
 
-	return { int: formattedWholeNumber, frac: formattedFractionalNumber, formattedNumber };
+	return {
+		int: formattedWholeNumber,
+		frac: formattedFractionalNumber,
+		formattedNumber,
+	};
 };
 
 export { getGreeting, getSeparatedNumber, getFormattedNumber };

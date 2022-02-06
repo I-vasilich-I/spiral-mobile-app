@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated, StyleSheet, View } from 'react-native';
 import * as BootSplash from 'react-native-bootsplash';
-import MaskedView from '@react-native-community/masked-view';
+import MaskedView from '@react-native-masked-view/masked-view';
 import IMAGES from '@src/assets/images';
 import styles from './SplashScreen.style';
 
@@ -81,6 +81,7 @@ const SplashScreen: React.FC = ({ children }) => {
 		<View style={styles.fullScreen}>
 			{fullScreenBackgroundLayer}
 			<MaskedView
+				androidRenderingMode="software"
 				style={styles.fullScreen}
 				maskElement={
 					<View style={styles.centeredFullScreen}>
@@ -92,6 +93,7 @@ const SplashScreen: React.FC = ({ children }) => {
 					</View>
 				}>
 				{fullScreenWhiteLayer}
+				{/* https://github.com/react-native-masked-view/masked-view/issues/88 */}
 				<Animated.View style={[opacityClearToVisible, appScale, styles.fullScreen]}>{children}</Animated.View>
 			</MaskedView>
 		</View>

@@ -27,7 +27,13 @@ const ProfileScreen = (): JSX.Element => {
 	};
 
 	const handleApplyUpdates = () => {
-		dispatch(setUser({ fullName: userName, birthDay: date.toString(), photo: userPhoto }));
+		dispatch(
+			setUser({
+				fullName: userName,
+				birthDay: date.toString(),
+				photo: userPhoto,
+			}),
+		);
 		setIsEditMode(false);
 	};
 

@@ -34,7 +34,7 @@ const HomeScreen = (): JSX.Element => {
 			time: '4 hrs ago',
 			description: `${fullName}, Your donation helped 5 amazing kids get much needed cancer surgery, thanks for being amazing!`,
 			imageSource: IMAGES.RECTANGLE2,
-			videoId: 'mxHoPYFsTuk',
+			videoSource: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4',
 		},
 		{
 			id: uuidv4(),
@@ -43,7 +43,7 @@ const HomeScreen = (): JSX.Element => {
 			time: '4 hrs ago',
 			description: `${fullName}, Your donation helped 5 amazing kids get much needed cancer surgery, thanks for being amazing!`,
 			imageSource: IMAGES.RECTANGLE,
-			videoId: 'Y5NtVB9TfDU',
+			videoSource: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
 		},
 		{
 			id: uuidv4(),
@@ -52,7 +52,7 @@ const HomeScreen = (): JSX.Element => {
 			time: '4 hrs ago',
 			description: `${fullName}, Your donation helped 5 amazing kids get much needed cancer surgery, thanks for being amazing!`,
 			imageSource: IMAGES.RECTANGLE2,
-			videoId: 'mxHoPYFsTuk',
+			videoSource: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4',
 		},
 		{
 			id: uuidv4(),
@@ -61,7 +61,7 @@ const HomeScreen = (): JSX.Element => {
 			time: '4 hrs ago',
 			description: `${fullName}, Your donation helped 5 amazing kids get much needed cancer surgery, thanks for being amazing!`,
 			imageSource: IMAGES.RECTANGLE,
-			videoId: 'Y5NtVB9TfDU',
+			videoSource: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4',
 		},
 	];
 
