@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import 'react-native-get-random-values';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { FlatList } from 'react-native';
 import { Text } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { v4 as uuidv4 } from 'uuid';
 import useAppSelector from '@src/redux/hooks/useAppSelector';
+import { setSeekTime } from '@src/redux/store/player/playerSlice';
 import { getGreeting } from '@src/helpers';
 import IMAGES from '@src/assets/images';
 import { ICard } from '@src/types';
@@ -23,6 +25,7 @@ interface IViewable {
 }
 
 const HomeScreen = (): JSX.Element => {
+	const dispatch = useDispatch();
 	const { fullName } = useAppSelector((state) => state.USER);
 	const [currentVisibleIndex, setCurrentVisibleIndex] = useState<number>(-1);
 
@@ -76,6 +79,7 @@ const HomeScreen = (): JSX.Element => {
 
 	const onViewableItemsChanged = ({ viewableItems }: IViewable) => {
 		if (viewableItems?.length > 0) {
+			dispatch(setSeekTime(0));
 			setCurrentVisibleIndex(viewableItems[0].index);
 			return;
 		}

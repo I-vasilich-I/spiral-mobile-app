@@ -1,6 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import { Dimensions, StatusBar, StyleSheet } from 'react-native';
 import VideoPlayer from 'react-native-video-controls';
+import { setSeekTime } from '@src/redux/store/player/playerSlice';
 
 interface IProgres {
 	currentTime: number;
@@ -12,25 +14,18 @@ interface IProps {
 }
 
 const VideoScreen = ({ route, navigation }: IProps): JSX.Element => {
-	const { source, volume } = route.params;
+	const dispatch = useDispatch();
+	const { source, volume, time } = route.params;
 	const videoPlayerRef = useRef();
-	const [timePassed, setTimePassed] = useState(0);
-
-	const handleBack = () => {
-		navigation.navigate({
-			name: 'Home',
-			params: { time: timePassed },
-			merge: true,
-		});
-		// navigation.navigate('Home', { time: 50 });
-		// navigation.navigate('Home', { time: timePassed });
-		// navigation.setParams('Home', { time: timePassed });
-		// navigation.goBack();
-	};
 
 	const handleProgress = ({ currentTime }: IProgres) => {
-		const roundedTime = Math.round(currentTime);
-		setTimePassed(roundedTime);
+		dispatch(setSeekTime(currentTime));
+	};
+
+	const handleLoad = () => {
+		if (videoPlayerRef.current) {
+			videoPlayerRef.current.seekTo(time);
+		}
 	};
 
 	useEffect(() => {
@@ -41,15 +36,15 @@ const VideoScreen = ({ route, navigation }: IProps): JSX.Element => {
 	return (
 		<VideoPlayer
 			toggleResizeModeOnFullscreen={false}
-			ref={(ref: any) => (videoPlayerRef.current = ref)}
+			ref={videoPlayerRef}
 			source={{ uri: source }}
 			style={styles.video}
 			volume={volume}
 			navigator={navigation}
 			disableFullscreen
-			onBack={handleBack}
 			onProgress={handleProgress}
-			progressUpdateInterval={2000}
+			progressUpdateInterval={1000}
+			onLoad={handleLoad}
 		/>
 	);
 };
