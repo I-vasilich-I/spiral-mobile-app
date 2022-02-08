@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
 	container: {
 		display: 'flex',
 		alignItems: 'center',
-		paddingBottom: 60,
+		paddingBottom: 30,
 	},
 	greeting: {
 		alignSelf: 'flex-start',
