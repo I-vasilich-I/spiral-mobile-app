@@ -7,8 +7,12 @@ import { showMessage } from 'react-native-flash-message';
 import useAppSelector from '@src/redux/hooks/useAppSelector';
 import SAGA_ACTIONS from '@src/redux/sagas/sagaActions/sagaActions';
 import { setError } from '@src/redux/store/auth/authSlice';
+import { VALIDATION_MESSAGES } from '@src/constants';
+import { validateValue } from '@src/helpers';
 import TextInput from '@components/TextInput/TextInput';
 import styles from './SignInScreen.style';
+
+const { passwordMessage, emailMessage } = VALIDATION_MESSAGES;
 
 const SignInScreen = (): JSX.Element => {
 	const dispatch = useDispatch();
@@ -16,9 +20,11 @@ const SignInScreen = (): JSX.Element => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const errorDuration = 3000;
-	const isLoginButtonDisabled = isLoading || !(Boolean(email) && Boolean(password));
-	const emailValidation = email ? '' : 'Enter email address';
-	const passwordValidation = password ? '' : 'Enter password';
+	const isEmailValid = validateValue(email, 'email');
+	const isPasswordValid = validateValue(password, 'password');
+	const emailValidation = isEmailValid || email === '' ? '' : emailMessage;
+	const passwordValidation = isPasswordValid || password === '' ? '' : passwordMessage;
+	const isLoginButtonDisabled = isLoading || !(isEmailValid && isPasswordValid);
 
 	const handleLogin = () => {
 		dispatch({ type: SAGA_ACTIONS.AUTH_USER, payload: { email, password } });

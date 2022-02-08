@@ -1,9 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-	container: {
-		paddingBottom: 30,
-	},
 	amount: {
 		marginTop: 20,
 		fontWeight: '500',
@@ -15,6 +12,9 @@ const styles = StyleSheet.create({
 		fontWeight: '100',
 		textAlign: 'center',
 		color: 'grey',
+	},
+	search: {
+		marginHorizontal: 5,
 	},
 });
 

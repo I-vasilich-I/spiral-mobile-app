@@ -18,8 +18,8 @@ const SavingCard = ({ transactions, totalAmount }: IProps): JSX.Element => {
 	return (
 		<Card containerStyle={styles.cardContainer}>
 			<View style={styles.titleContainer}>
-				<Text>End day balance - Jul 11</Text>
-				<Text>${amount}</Text>
+				<Text style={styles.text}>End day balance - Jul 11</Text>
+				<Text style={styles.text}>${amount}</Text>
 			</View>
 			<Divider />
 			{transactions.map((elem) => (

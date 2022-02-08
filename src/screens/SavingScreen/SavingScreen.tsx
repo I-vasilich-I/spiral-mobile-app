@@ -12,7 +12,7 @@ import IMAGES from '@src/assets/images';
 import styles from './SavingScreen.style';
 
 const SavingScreen = (): JSX.Element => {
-	const { formattedNumber: totalGainedInterest } = getFormattedNumber(500);
+	const { formattedNumber: totalGainedInterest } = getFormattedNumber(50);
 	const totalGainedGoodness = getSeparatedNumber(600);
 
 	const transactions: ITransaction[] = [
@@ -93,22 +93,26 @@ const SavingScreen = (): JSX.Element => {
 	const totalAmount = transactions.reduce((acc, b) => acc + b.amount * 100, 0) / 100;
 
 	return (
-		<SafeAreaView style={styles.container}>
-			<ScrollView style={styles.mainContainer}>
-				<Text style={styles.amount}>
-					<AmountText amount={totalAmount} mainFontSize={30} secondaryFontSize={20} />
-				</Text>
-				<Text style={styles.subtitle}>Total available cash</Text>
-				<Image source={IMAGES.SAVINGS_GRAPH_V2} style={styles.graph} />
+		<SafeAreaView>
+			<ScrollView>
+				<View style={styles.view}>
+					<Text style={styles.amount}>
+						<AmountText amount={totalAmount} mainFontSize={30} secondaryFontSize={20} />
+					</Text>
+					<Text style={styles.subtitle}>Total available cash</Text>
+					<Image source={IMAGES.SAVINGS_GRAPH_V2} style={styles.graph} />
+				</View>
 				<View style={styles.gainedContainer}>
-					<Text>Total interest gained</Text>
+					<Text style={styles.gainedText}>Total interest gained</Text>
 					<Text style={styles.gainedAmount}>+${totalGainedInterest}</Text>
 				</View>
 				<View style={styles.gainedContainer}>
-					<Text>Goodness points gained</Text>
+					<Text style={styles.gainedText}>Goodness points gained</Text>
 					<Text style={styles.gainedAmount}>+{totalGainedGoodness}</Text>
 				</View>
-				<SearchTransactions disabled />
+				<View style={styles.search}>
+					<SearchTransactions disabled />
+				</View>
 				<SavingCard transactions={transactions} totalAmount={totalAmount} />
 			</ScrollView>
 		</SafeAreaView>

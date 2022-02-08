@@ -25,7 +25,7 @@ const GivingCard = ({
 	const isVideoShown = currentId === currentVisibleIndex;
 
 	return (
-		<Card>
+		<Card containerStyle={styles.container}>
 			<View style={styles.view}>
 				<Card.Title>
 					<View style={styles.titleContainer}>

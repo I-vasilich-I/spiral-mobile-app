@@ -9,6 +9,7 @@ interface IProps {
 	setValue: React.Dispatch<React.SetStateAction<string>>;
 	label: string;
 	placeholder: string;
+	renderError?: boolean;
 	keyboard?: KeyboardTypeOptions | undefined;
 	secure?: boolean;
 	autoComplete?: boolean;
@@ -24,6 +25,7 @@ const TextInput = ({
 	setValue,
 	label,
 	placeholder,
+	renderError = true,
 	secure = false,
 	autoComplete = true,
 	keyboard = undefined,
@@ -44,6 +46,7 @@ const TextInput = ({
 			onChangeText={handleValueChange}
 			placeholder={placeholder}
 			label={label}
+			labelStyle={styles.labelStyle}
 			secureTextEntry={secure}
 			autoCompleteType={autoComplete}
 			keyboardType={keyboard}
@@ -52,7 +55,7 @@ const TextInput = ({
 			errorStyle={styles.errorStyle}
 			disabled={disabled}
 			containerStyle={containerStyle}
-			renderErrorMessage={!!errorMessage}
+			renderErrorMessage={renderError}
 		/>
 	);
 };

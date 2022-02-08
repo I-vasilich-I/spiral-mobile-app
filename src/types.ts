@@ -54,3 +54,5 @@ export interface IFormatted {
 }
 
 export type TPhoto = ImageSourcePropType | string;
+
+export type TInput = 'password' | 'email';

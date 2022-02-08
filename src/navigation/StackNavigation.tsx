@@ -20,11 +20,11 @@ const StackNavigation = () => {
 	let BottomTab = BottomTabStack;
 
 	const checkingOptions = ({ route }) => ({
-		headerTitle: <CustomTitle title="Checking" subtitle={route.params?.subtitle} />,
+		headerTitle: () => <CustomTitle title="Checking" subtitle={route.params?.subtitle} />,
 	});
 
 	const savingsOptions = ({ route }) => ({
-		headerTitle: <CustomTitle title="Savings" subtitle={route.params?.subtitle} />,
+		headerTitle: () => <CustomTitle title="Savings" subtitle={route.params?.subtitle} />,
 	});
 
 	if (Platform.OS === 'ios') {

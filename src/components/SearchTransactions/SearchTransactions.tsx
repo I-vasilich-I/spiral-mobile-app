@@ -22,6 +22,7 @@ const SearchTransactions = ({ disabled = false }: IProps): JSX.Element => {
 				containerStyle={styles.iContainer}
 				inputStyle={styles.inputText}
 				disabled={disabled}
+				renderError={false}
 			/>
 			<Button
 				title="Filter by"

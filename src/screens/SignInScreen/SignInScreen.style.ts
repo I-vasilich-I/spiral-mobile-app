@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'space-between',
-		paddingTop: 50,
+		paddingTop: 40,
 		paddingBottom: 20,
 	},
 	formBody: {
@@ -20,16 +20,16 @@ const styles = StyleSheet.create({
 		margin: 0,
 	},
 	titleContainer: {
-		width: 50,
+		alignSelf: 'flex-start',
 		paddingBottom: 5,
 		marginBottom: 25,
 		marginLeft: 10,
 		borderBottomColor: theme.colors.primary,
-		borderBottomWidth: 2,
+		borderBottomWidth: 3,
 		borderStyle: 'solid',
 	},
 	title: {
-		fontSize: 18,
+		fontSize: 22,
 		fontWeight: 'bold',
 	},
 	LoginButton: {
@@ -68,13 +68,15 @@ const styles = StyleSheet.create({
 	passwordButton: {
 		padding: 0,
 		margin: 0,
-		width: 155,
 		alignSelf: 'flex-end',
 		borderRadius: 25,
+		borderWidth: 0,
 	},
 	passwordButtonTitle: {
 		letterSpacing: -1,
 		textTransform: 'uppercase',
+		fontSize: 14,
+		fontWeight: 'bold',
 	},
 	disabledStyle: {
 		backgroundColor: 'grey',

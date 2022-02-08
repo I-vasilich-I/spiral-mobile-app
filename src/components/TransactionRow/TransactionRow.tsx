@@ -43,7 +43,7 @@ const TransactionRow = ({ title, subtitle, amount, income }: IProps): JSX.Elemen
 			</ListItem.Content>
 			<ListItem.Content style={styles.right}>
 				<ListItem.Title>
-					<AmountText amount={amount} color={amountColor} />
+					<AmountText amount={amount} color={amountColor} fontWeight="600" />
 				</ListItem.Title>
 			</ListItem.Content>
 		</ListItem>

@@ -1,6 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+	container: {
+		paddingHorizontal: 0,
+		borderRadius: 5,
+	},
 	title: {
 		fontSize: 22,
 		fontWeight: '700',

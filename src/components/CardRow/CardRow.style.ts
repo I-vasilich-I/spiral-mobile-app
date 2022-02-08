@@ -3,12 +3,14 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
 	view: {
 		paddingBottom: 10,
+
 		margin: 0,
 		marginTop: 5,
 	},
 	container: {
 		padding: 0,
 		margin: 0,
+		paddingHorizontal: 15,
 	},
 	right: {
 		display: 'flex',

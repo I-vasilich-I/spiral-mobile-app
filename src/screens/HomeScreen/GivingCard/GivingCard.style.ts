@@ -1,6 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+	container: {
+		borderRadius: 5,
+	},
 	view: {
 		alignItems: 'flex-start',
 	},

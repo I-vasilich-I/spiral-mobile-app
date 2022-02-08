@@ -9,7 +9,11 @@ const styles = StyleSheet.create({
 	greeting: {
 		alignSelf: 'flex-start',
 		padding: 10,
+		paddingHorizontal: 15,
 		paddingBottom: 0,
+		fontWeight: '700',
+		letterSpacing: -0.5,
+		color: '#62686F',
 	},
 	scrollView: {
 		width: '100%',
