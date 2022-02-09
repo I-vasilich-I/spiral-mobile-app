@@ -1,18 +1,21 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { View } from 'react-native';
 import { FAB, Image, useTheme } from 'react-native-elements';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import photoService from '@src/services/photo';
+import { TPhoto } from '@src/types';
 import styles from './ProfilePhoto.style';
 
 interface IProps {
 	isEditMode: boolean;
-	photo: string;
-	setPhoto: React.Dispatch<React.SetStateAction<string>>;
+	photo: TPhoto;
+	setPhoto: React.Dispatch<React.SetStateAction<TPhoto>>;
 }
 
 const ProfilePhoto = ({ isEditMode, photo, setPhoto }: IProps): JSX.Element => {
 	const { theme } = useTheme();
+	const photoSource = typeof photo === 'string' ? { uri: photo } : photo;
 
 	const handleImagePick = async () => {
 		try {
@@ -40,7 +43,7 @@ const ProfilePhoto = ({ isEditMode, photo, setPhoto }: IProps): JSX.Element => {
 
 	return (
 		<View>
-			<Image source={{ uri: photo }} containerStyle={styles.imageContainer} />
+			<Image source={photoSource} containerStyle={styles.imageContainer} />
 			<View style={styles.imageFABContainer}>
 				<FAB
 					visible={isEditMode}

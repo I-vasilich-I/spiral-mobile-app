@@ -1,6 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+	container: {
+		borderRadius: 5,
+	},
 	view: {
 		alignItems: 'flex-start',
 	},
@@ -32,6 +35,9 @@ const styles = StyleSheet.create({
 	buttonTitle: {
 		fontSize: 12,
 		paddingLeft: 5,
+	},
+	image: {
+		height: 200,
 	},
 });
 

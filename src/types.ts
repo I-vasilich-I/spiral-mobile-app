@@ -2,7 +2,7 @@
 import { ImageSourcePropType } from 'react-native';
 
 export type NavigationParamList = {
-	Home: undefined;
+	Home: { time: number };
 	Accounts: undefined;
 	Giving: undefined;
 	Payments: undefined;
@@ -12,6 +12,7 @@ export type NavigationParamList = {
 	SignIn: undefined;
 	BottomTab: undefined;
 	Profile: undefined;
+	Video: { time: number; volume: number; source: string };
 };
 
 export type Income = 'none' | 'regular' | 'special';
@@ -23,6 +24,9 @@ export interface ICard {
 	time: string;
 	description: string;
 	imageSource: ImageSourcePropType;
+	videoSource: string;
+	currentId?: number;
+	currentVisibleIndex?: number;
 }
 
 export interface IMoneyActionButton {
@@ -48,3 +52,7 @@ export interface IFormatted {
 	frac: string;
 	formattedNumber: string;
 }
+
+export type TPhoto = ImageSourcePropType | string;
+
+export type TInput = 'password' | 'email';

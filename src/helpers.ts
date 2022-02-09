@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import dateFormat from 'dateformat';
-import { IFormatted } from './types';
+import { IFormatted, TInput } from './types';
+import { VALIDATE } from '@src/constants';
 
 const getGreeting = (user: string): string => {
 	const today = new Date();
@@ -32,7 +33,13 @@ const getFormattedNumber = (number: number): IFormatted => {
 	const formattedFractionalNumber = `${fractionalNumber < 10 ? '0' : ''}${fractionalNumber}`;
 	const formattedNumber = `${formattedWholeNumber}.${formattedFractionalNumber}`;
 
-	return { int: formattedWholeNumber, frac: formattedFractionalNumber, formattedNumber };
+	return {
+		int: formattedWholeNumber,
+		frac: formattedFractionalNumber,
+		formattedNumber,
+	};
 };
 
-export { getGreeting, getSeparatedNumber, getFormattedNumber };
+const validateValue = (value: string, type: TInput): boolean => VALIDATE[type](value);
+
+export { getGreeting, getSeparatedNumber, getFormattedNumber, validateValue };

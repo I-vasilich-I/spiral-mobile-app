@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import { SafeAreaView, FlatList } from 'react-native';
+import { SafeAreaView, FlatList, View } from 'react-native';
 import { Text } from 'react-native-elements';
 import { v4 as uuidv4 } from 'uuid';
 import { ITransaction, ITransactionCard } from '@src/types';
@@ -124,14 +124,16 @@ const CheckingScreen = (): JSX.Element => {
 				<AmountText amount={totalAmount} mainFontSize={30} secondaryFontSize={20} />
 			</Text>
 			<Text style={styles.subtitle}>Total available cash</Text>
-			<SearchTransactions disabled />
+			<View style={styles.search}>
+				<SearchTransactions disabled />
+			</View>
 		</>
 	);
 
 	const renderItem = ({ item: [key, value] }: IProps) => <TransactionCard date={key} transactions={value} />;
 
 	return (
-		<SafeAreaView style={styles.container}>
+		<SafeAreaView>
 			<FlatList
 				data={cards}
 				renderItem={renderItem}

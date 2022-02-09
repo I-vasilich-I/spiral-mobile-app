@@ -1,20 +1,31 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import { View } from 'react-native';
+import { Image, View } from 'react-native';
 import { Avatar, Button, Card, Text, useTheme } from 'react-native-elements';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import VideoWithControls from '@components/VideoWithControls/VideoWithControls';
 import IMAGES from '@src/assets/images';
-import styles from './GivingCard.style';
 import { ICard } from '@src/types';
+import styles from './GivingCard.style';
 
-const GivingCard = ({ title, charityName, time, description, imageSource }: ICard): JSX.Element => {
+const GivingCard = ({
+	title,
+	charityName,
+	time,
+	description,
+	imageSource,
+	currentId,
+	videoSource,
+	currentVisibleIndex,
+}: ICard): JSX.Element => {
 	const { theme } = useTheme();
 	const icon = <MaterialCommunityIcons name="share" size={16} color="white" />;
 	const dot = <Entypo name="dot-single" size={16} color={theme.colors?.primary} />;
+	const isVideoShown = currentId === currentVisibleIndex;
 
 	return (
-		<Card>
+		<Card containerStyle={styles.container}>
 			<View style={styles.view}>
 				<Card.Title>
 					<View style={styles.titleContainer}>
@@ -30,7 +41,7 @@ const GivingCard = ({ title, charityName, time, description, imageSource }: ICar
 					</View>
 				</Card.Title>
 			</View>
-			<Card.Image source={imageSource} />
+			<VideoWithControls source={videoSource} isPaused={!isVideoShown} poster={imageSource} />
 			<Text>{description}</Text>
 			<Button
 				title="Share to spread the word"

@@ -6,6 +6,7 @@ import CheckingScreen from '@screens/CheckingScreen/CheckingScreen';
 import ProfileScreen from '@screens/ProfileScreen/ProfileScreen';
 import SavingScreen from '@screens/SavingScreen/SavingScreen';
 import SignInScreen from '@screens/SignInScreen/SignInScreen';
+import VideoScreen from '@screens/VideoScreen/VideoScreen';
 import AvatarMenu from '@components/AvatarMenu/AvatarMenu';
 import CustomTitle from '@components/CustomTitle/CustomTitle';
 import BottomTabStack from '@src/navigation/BottomTabStack';
@@ -19,11 +20,11 @@ const StackNavigation = () => {
 	let BottomTab = BottomTabStack;
 
 	const checkingOptions = ({ route }) => ({
-		headerTitle: <CustomTitle title="Checking" subtitle={route.params?.subtitle} />,
+		headerTitle: () => <CustomTitle title="Checking" subtitle={route.params?.subtitle} />,
 	});
 
 	const savingsOptions = ({ route }) => ({
-		headerTitle: <CustomTitle title="Savings" subtitle={route.params?.subtitle} />,
+		headerTitle: () => <CustomTitle title="Savings" subtitle={route.params?.subtitle} />,
 	});
 
 	if (Platform.OS === 'ios') {
@@ -59,6 +60,7 @@ const StackNavigation = () => {
 					<Stack.Screen name="Checking" component={CheckingScreen} options={checkingOptions} />
 					<Stack.Screen name="Savings" component={SavingScreen} options={savingsOptions} />
 					<Stack.Screen name="Profile" component={ProfileScreen} />
+					<Stack.Screen name="Video" component={VideoScreen} options={{ headerShown: false }} />
 				</>
 			)}
 		</Stack.Navigator>

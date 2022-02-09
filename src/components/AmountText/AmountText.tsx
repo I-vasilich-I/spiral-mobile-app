@@ -9,15 +9,22 @@ interface IProps {
 	mainFontSize?: number;
 	secondaryFontSize?: number;
 	color?: ColorValue | undefined;
+	fontWeight?: 'bold' | 'normal' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | undefined;
 }
 
-const AmountText = ({ amount, mainFontSize = 20, secondaryFontSize = 15, color = undefined }: IProps): JSX.Element => {
+const AmountText = ({
+	amount,
+	mainFontSize = 20,
+	secondaryFontSize = 15,
+	color = undefined,
+	fontWeight = undefined,
+}: IProps): JSX.Element => {
 	const { int, frac } = getFormattedNumber(amount);
 
 	return (
-		<Text style={{ fontSize: mainFontSize, color }}>
+		<Text style={{ fontSize: mainFontSize, color, fontWeight }}>
 			${int}
-			<Text style={{ fontSize: secondaryFontSize, color }}>.{frac}</Text>
+			<Text style={{ fontSize: secondaryFontSize, color, fontWeight }}>.{frac}</Text>
 		</Text>
 	);
 };

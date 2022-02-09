@@ -46,7 +46,7 @@ const AccountCard = (): JSX.Element => {
 	const totalAmount = rows.reduce((acc, b) => acc + b.amount * 100, 0) / 100;
 
 	return (
-		<Card>
+		<Card containerStyle={styles.container}>
 			<Card.Title>
 				<View>
 					<Text style={styles.title}>Accounts Overview</Text>

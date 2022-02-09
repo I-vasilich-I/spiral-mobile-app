@@ -6,18 +6,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import rootSaga from '../sagas/rootSaga';
 import authReducer from './auth/authSlice';
 import userReducer from './user/userSlice';
+import playerReducer from './player/playerSlice';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
 	AUTH: authReducer,
 	USER: userReducer,
+	PLAYER: playerReducer,
 });
 
 const persistConfig = {
 	key: 'root',
 	version: 1,
 	storage: AsyncStorage,
+	blacklist: ['PLAYER'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

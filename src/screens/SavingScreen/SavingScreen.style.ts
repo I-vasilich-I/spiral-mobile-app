@@ -1,11 +1,11 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-	mainContainer: {
+	view: {
+		backgroundColor: 'white',
+		margin: 0,
 		padding: 10,
-	},
-	container: {
-		paddingBottom: 30,
+		marginBottom: 10,
 	},
 	amount: {
 		marginTop: 20,
@@ -24,15 +24,24 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		width: '100%',
-		paddingHorizontal: 20,
+		paddingHorizontal: 30,
+	},
+	gainedText: {
+		color: '#62686F',
+		fontWeight: '700',
 	},
 	gainedAmount: {
 		color: 'green',
+		fontWeight: '600',
+		fontSize: 18,
 	},
 	graph: {
 		width: '100%',
 		height: 200,
 		marginBottom: 10,
+	},
+	search: {
+		marginHorizontal: 10,
 	},
 });
 

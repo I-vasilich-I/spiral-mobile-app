@@ -1,15 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import IMAGES from '@src/assets/images';
+import { TPhoto } from '@src/types';
 
 interface IUser {
-	photo: string;
+	photo: TPhoto;
 	fullName: string;
 	birthDay: string;
 }
 
 const initialState: IUser = {
-	photo: IMAGES.OVAL,
+	photo: IMAGES.OVAL as string,
 	fullName: 'User',
 	birthDay: new Date().toString(),
 };
@@ -18,7 +19,7 @@ export const userSlice = createSlice({
 	name: 'USER',
 	initialState,
 	reducers: {
-		setPhoto(state, action: PayloadAction<string>) {
+		setPhoto(state, action: PayloadAction<TPhoto>) {
 			state.photo = action.payload;
 		},
 		setUser(state, action: PayloadAction<IUser>) {

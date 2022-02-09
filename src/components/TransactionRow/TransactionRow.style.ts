@@ -4,7 +4,8 @@ const styles = StyleSheet.create({
 	container: {
 		paddingVertical: 10,
 		margin: 0,
-		marginTop: 5,
+		marginTop: 2,
+		paddingTop: 13,
 	},
 	right: {
 		display: 'flex',
@@ -18,6 +19,7 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		lineHeight: 16,
+		fontWeight: '600',
 	},
 	margin: {
 		marginRight: 10,
